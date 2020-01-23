@@ -7,24 +7,32 @@ import math
 def recipe_batches(recipe, ingredients):
   # Variable for total batches
   batches = 0
+  # Stores list of maximum amount of batches per ingredient
   batch_quotient = []
+  # Uses to test which is the smallest quotient amongst batch quotient
   smallest_quotient = float("inf")
+
   # if the len(recipe) != len(ingredients)
   if len(ingredients) != len(recipe):
     batches = 0
     return batches
     # return 0
 
+  #  Loop through recipe & items
   for (recipe_key,recipe_value), (ingredients_key, ingredients_value) in zip(recipe.items(), ingredients.items()):
+    #  Round down the quotient of required ingredients vs ingredients on hand
     print(f"recipe {recipe_value}, ingredients {ingredients_value}")
+    # append quotients to new array
     batch_quotient.append(ingredients_value //  recipe_value) 
     #  else we need to loop through recipe 
 
+# Loop through to check which is the smallest quotient
   for i in range(len(batch_quotient)):
     print(smallest_quotient)
     if batch_quotient[i] < smallest_quotient:
       smallest_quotient = batch_quotient[i]
     
+    # set batches to smallest quotient. You can only make as many recipes as the least amount of ingredients you have
     batches = smallest_quotient
   print(f"quotient {batch_quotient}")
   return batches
